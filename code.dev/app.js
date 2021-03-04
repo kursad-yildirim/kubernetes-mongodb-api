@@ -8,13 +8,14 @@ app.use(bodyParser.json());
 targetDB.init();
 var dbData = {};
 const databaseName = process.env.DB_NAME;
+const appName = process.env.APP_NAME;
 const requiredFieldName = process.env.DB_REQUIRED;
 const apiPort = process.env.API_PORT;
 
-app.use('/data', router);
+app.use('/crud', router);
 
 //===== GET =====//
-router.route('/' + databaseName).get(function(req, res, next){
+router.route('/' + appName).get(function(req, res, next){
 	var queryString = {};
 	var columnSelect = {_id: 0};
 	if (req.query.hasOwnProperty(requiredFieldName)){
@@ -39,7 +40,7 @@ router.route('/' + databaseName).get(function(req, res, next){
 });
 
 //===== POST =====//
-router.route('/' + databaseName).post(function(req, res, next){
+router.route('/' + appName).post(function(req, res, next){
         targetDB[databaseName].create(req.body).then(success).catch(failure);
         function success(data){
                 res.json({operationName: 'create', operationStatus: 'ok'});
@@ -50,7 +51,7 @@ router.route('/' + databaseName).post(function(req, res, next){
 });
 
 //===== PUT =====//
-router.route('/' + databaseName).put(function(req, res, next){
+router.route('/' + appName).put(function(req, res, next){
         targetDB[databaseName].findOneAndUpdate({[requiredFieldName]: req.body.name }, req.body,{new: true, upsert:true}).then(success).catch(failure);
         function success(data){
                         res.json({operationName: 'update', operationStatus: 'ok'});
@@ -61,7 +62,7 @@ router.route('/' + databaseName).put(function(req, res, next){
 });
 
 //===== DELETE =====//
-router.route('/' + databaseName).delete(function(req, res, next){
+router.route('/' + appName).delete(function(req, res, next){
         targetDB[databaseName].deleteMany(req.body).then(success).catch(failure);
         function success(data){
                 res.json({operationName: 'delete', operationStatus: 'ok'});

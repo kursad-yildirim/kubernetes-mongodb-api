@@ -2,10 +2,10 @@
 	'use strict';
 	const mongoose = require('mongoose');
 	const databaseName = process.env.DB_NAME;
-	const databaseUrl = process.env.DB_URL;
+	const databaseIP = process.env.DB_IP;
 	const requiredFieldName = process.env.DB_REQUIRED;
 	var databaseConfig = {
-		server: databaseUrl,
+		server: databaseIP,
 		database: databaseName,
 	}
 	var Schema = mongoose.Schema;
