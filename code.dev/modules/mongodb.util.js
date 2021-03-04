@@ -3,9 +3,10 @@
 	const mongoose = require('mongoose');
 	const databaseName = process.env.DB_NAME;
 	const databaseIP = process.env.DB_IP;
+	const databasePort = process.env.DB_PORT;
 	const requiredFieldName = process.env.DB_REQUIRED;
 	var databaseConfig = {
-		server: databaseIP,
+		server: databaseIP + ':' + databasePort,
 		database: databaseName,
 	}
 	var Schema = mongoose.Schema;
