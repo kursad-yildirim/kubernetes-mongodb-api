@@ -26,8 +26,8 @@
 			});
 		mongoose.set('useCreateIndex', true);
 	}
-	var moduleSchema = new Schema({[requiredFieldName]: {type:String,required:true,unique:true},}, { strict: false });
+	var databaseSchema = new Schema({[requiredFieldName]: {type:String,required:true,unique:true},}, { strict: false });
 	
 	module.exports.init = init;
-	module.exports[moduleName] = mongoose.model(moduleName, moduleSchema);
+	module.exports[databaseName] = mongoose.model(databaseName, databaseSchema);
 })();
