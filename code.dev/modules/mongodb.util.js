@@ -5,6 +5,7 @@
 	const databaseIP = process.env.DB_IP;
 	const databasePort = process.env.DB_PORT;
 	const requiredFieldName = process.env.DB_REQUIRED;
+
 	var databaseConfig = {
 		server: databaseIP + ':' + databasePort,
 		database: databaseName,
