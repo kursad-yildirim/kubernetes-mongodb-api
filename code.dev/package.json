@@ -1,5 +1,5 @@
 {
-	"name": "1k-dal",
+	"name": "mongodb-api",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {

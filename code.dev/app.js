@@ -12,7 +12,7 @@ const appName = process.env.APP_NAME;
 const requiredFieldName = process.env.DB_REQUIRED;
 const apiPort = process.env.API_PORT;
 
-app.use('/crud', router);
+app.use('/db', router);
 
 //===== GET =====//
 router.route('/' + appName).get(function(req, res, next){
