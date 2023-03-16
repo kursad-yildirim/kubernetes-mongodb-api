@@ -1,15 +1,12 @@
 {
-	"name": "mongodb-api",
+	"name": "tuff-db-api",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
 		"start": "node ./app.js"
 	},
 	"dependencies": {
-		"bluebird": "^3.5.2",
-		"cookie-parser": "~1.4.3",
 		"express": "~4.16.0",
-		"mongodb": "^3.1.4",
 		"mongoose": "^5.7.5"
 	}
 }

@@ -1,17 +1,20 @@
 (function(){
 	'use strict';
 	const mongoose = require('mongoose');
+    
+    const databaseServer = process.env.DB_SERVER;
 	const databaseName = process.env.DB_NAME;
-	const databaseIP = process.env.DB_IP;
 	const databasePort = process.env.DB_PORT;
 	const requiredFieldName = process.env.DB_REQUIRED;
-
-	var databaseConfig = {
-		server: databaseIP + ':' + databasePort,
+	
+    var databaseConfig = {
+		server:  databaseServer + ':' + databasePort,
 		database: databaseName,
 	}
-	var Schema = mongoose.Schema;
-	function init(){
+	
+    var Schema = mongoose.Schema;
+	
+    function init(){
 		var options = {
 			useUnifiedTopology: true,
 			useNewUrlParser: true
@@ -27,7 +30,8 @@
 			});
 		mongoose.set('useCreateIndex', true);
 	}
-	var databaseSchema = new Schema({[requiredFieldName]: {type:String,required:true,unique:true},}, { strict: false });
+	
+    var databaseSchema = new Schema({[requiredFieldName]: {type:String,required:true,unique:true},}, { strict: false });
 	
 	module.exports.init = init;
 	module.exports[databaseName] = mongoose.model(databaseName, databaseSchema);

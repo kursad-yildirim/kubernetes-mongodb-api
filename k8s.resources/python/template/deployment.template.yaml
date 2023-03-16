@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mg-deployment-name-mg
+  namespace: mg-namespace-mg
+  labels:
+    mg-labels-mg
+spec:
+  replicas: mg-replicas-mg
+  selector:
+    matchLabels:
+            mg-labels-mg
+  template:
+    metadata:
+      labels:
+        mg-labels-mg
+    spec:
+      imagePullSecrets:
+       - name: image-registry-cred
+      containers:
+        - name: mongodb-api-container
+          image: mg-image-name-mg
+          imagePullPolicy: IfNotPresent
+          envFrom: 
+            - configMapRef:
+                name: mg-deployment-name-mg
+          ports:
+            - name: node-js-port
+              containerPort: mg-container-port-mg
+          livenessProbe:
+            httpGet:
+              path: /idid
+              port: mg-container-port-mg
+            initialDelaySeconds: 3
+            periodSeconds: 3

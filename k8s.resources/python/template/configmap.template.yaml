@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mg-configmap-name-mg
+  namespace: mg-namespace-mg
+  labels:
+    mg-labels-mg
+data:
+    mg-configmap-data-mg

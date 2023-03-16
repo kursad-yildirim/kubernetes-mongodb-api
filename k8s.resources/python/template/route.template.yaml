@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mg-ingress-name-mg
+  namespace: mg-namespace-mg
+  labels:
+    mg-labels-mg
+spec:
+  rules:
+  - host: mg-ingress-host-mg
+    http:
+      paths:
+      - path: mg-ingress-path-mg
+        pathType: mg-ingress-path-type-mg
+        backend:
+          service:
+             name: mg-service-name-mg
+             port:
+                number: mg-service-port-mg

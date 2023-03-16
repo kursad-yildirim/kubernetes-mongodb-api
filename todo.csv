@@ -1,0 +1,6 @@
+
+REPOSITORY,TASK,DESCRIPTION
+1k-node.js-crud,Develop Helm Chart,Develop a helm chart to create same resources with a single action
+1k-node.js-crud,Authentication,Add oauth authentication
+1k-node.js-crud,Encryption,Add ssl
+1k-node.js-crud,Frontend,Develop a frontend application

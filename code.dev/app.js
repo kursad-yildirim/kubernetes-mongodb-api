@@ -12,8 +12,11 @@ const appName = process.env.APP_NAME;
 const requiredFieldName = process.env.DB_REQUIRED;
 const apiPort = process.env.API_PORT;
 
-app.use('/db', router);
-
+app.use('/', router);
+//===== HEALTH =====//
+router.route('/healthy').get(function(req, res, next){
+        res.json([{operationName: 'healthy', operationStatus: 'OK'}]);
+        });
 //===== GET =====//
 router.route('/' + appName).get(function(req, res, next){
 	var queryString = {};

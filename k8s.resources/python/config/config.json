@@ -1,0 +1,42 @@
+{
+  "control": {
+    "version": "1.0.0",
+    "image-registry": "image-registry.openshift-image-registry.svc:5000",
+    "resources": "configmap|deployment|route|service",
+    "state": false
+  },
+  "mongodb-api": {
+    "name": "tuff-mongodb-api",
+    "namespace": "tuff-data",
+    "labels": {
+      "category": "microservice",
+      "application": "ocp-alerts",
+      "resiliency": "single",
+      "instance-id": "inst-0002"
+    },
+    "liveness-path": "healthy",
+    "port": 22080
+  },
+  "configmap": {
+    "data": {
+      "DB_SERVER": "tuff-mongodb",
+      "DB_PORT": "27017",
+      "DB_NAME": "alerts",
+      "APP_NAME": "ocp",
+      "DB_REQUIRED": "name",
+      "API_PORT": "22080"
+    }
+  },
+  "route": {
+    "host": "tuff-mongodb.tripko.local",
+    "path": "/",
+    "pathType": "Exact"
+  },
+  "deployment": {
+    "replicas": 1,
+    "container-image": "image-registry.openshift-image-registry.svc:5000/microservice/tuff-mongodb-api:1.0.0"
+  },
+  "service": {
+    "type": "ClusterIP"
+  }
+}
